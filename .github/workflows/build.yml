@@ -33,29 +33,29 @@ jobs:
         run: west update
       - name: West Zephyr export
         run: west zephyr-export
-      - name: West Build (Sofle Left)
-        run: west build -s zmk/app -b nice_nano -- -DSHIELD=sofle_left -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: Sofle DTS File
+      - name: West Build (Dactyl Stabilized Left)
+        run: west build -s zmk/app -b nice_nano -- -DSHIELD=dactly-stabilized_left -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+      - name: Dactyl Stabilized DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/nice_nano.dts.pre.tmp
-      - name: Sofle Left Kconfig file
+      - name: Dactyl Stabilized Left Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 sofle_left_nice_nano.uf2
-      - name: Archive (Sofle Left)
+        run: cp build/zephyr/zmk.uf2 dactly-stabilized_left_nice_nano.uf2
+      - name: Archive (Dactyl Stabilized Left)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: sofle_left_nice_nano.uf2
-      - name: West Build (Sofle Right)
-        run: west build --pristine -s zmk/app -b nice_nano -- -DSHIELD=sofle_right -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+          path: dactly-stabilized_left_nice_nano.uf2
+      - name: West Build (Dactyl Stabilized Right)
+        run: west build --pristine -s zmk/app -b nice_nano -- -DSHIELD=dactly-stabilized_right -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
 
-      - name: Sofle Right Kconfig file
+      - name: Dactyl Stabilized Right Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 sofle_right_nice_nano.uf2
-      - name: Archive (Sofle Right)
+        run: cp build/zephyr/zmk.uf2 dactly-stabilized_right_nice_nano.uf2
+      - name: Archive (Dactyl Stabilized Right)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: sofle_right_nice_nano.uf2
+          path: dactly-stabilized_right_nice_nano.uf2
