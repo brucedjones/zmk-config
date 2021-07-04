@@ -1,5 +1,5 @@
 config SHIELD_DACTYL_STABILIZED_LEFT
-    def_bool $(shields_list_contains,dactyl_stabilized_left)
+    def_bool $(shields_list_contains,dactyl-stabilized_left)
 
 config SHIELD_DACTYL_STABILIZED_RIGHT
-    def_bool $(shields_list_contains,dactyl_stabilized_right)
+    def_bool $(shields_list_contains,dactyl-stabilized_right)
